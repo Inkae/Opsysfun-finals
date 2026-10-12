@@ -1,3 +1,6 @@
+// OPERATING SYSTEM FUNDAMENTALS FINAL OUTPUT
+// Caranto, Crisiane | Mangaliman, Rolaigne | Velasco, Aiken
+
 import java.util.Scanner;
 
 public class Main {
@@ -7,13 +10,13 @@ public class Main {
 
         while (running) {
             System.out.println("\n=== MAIN MENU ===");
-            System.out.println("Preemptive Scheduling Algorithms - SIANE");
+            System.out.println("Preemptive Scheduling Algorithms");
             System.out.println("  1. Round Robin");
             System.out.println("  2. Preemptive Priority");
-            System.out.println("Non-Preemptive Algorithms - ROLAIGNE");
+            System.out.println("Non-Preemptive Algorithms");
             System.out.println("  3. Shortest Job Next");
             System.out.println("  4. Non-Preemptive Priority");
-            System.out.println("Page Replacement Algorithms - Aiken");
+            System.out.println("Page Replacement Algorithms");
             System.out.println("  5. First In First Out (FIFO)");
             System.out.println("  6. Most Recently Used (MRU)");
             System.out.println("  7. Exit Application");
