@@ -8,27 +8,38 @@ public class FIFO {
         this.frames = frames;
     }
 
-    // Runs the FIFO algorithm
     public void run(int[] referenceString) {
         System.out.println("\n--- First In First Out (FIFO) ---");
         Queue<Integer> memory = new LinkedList<>();
         int faults = 0;
+        int hits = 0;
+        int totalRequests = referenceString.length;
 
         for (int page : referenceString) {
             if (!memory.contains(page)) {
-                // Page Fault: Memory is full, remove the oldest page
+                // Page Fault
                 if (memory.size() == frames) {
                     memory.poll(); 
                 }
-                // Add the new page
                 memory.add(page); 
                 faults++;
                 System.out.println("Page " + page + " -> Fault: " + memory);
             } else {
                 // Page Hit
+                hits++;
                 System.out.println("Page " + page + " -> Hit:   " + memory);
             }
         }
-        System.out.println("Total FIFO Faults: " + faults);
+        
+        // Calculate Rates
+        double faultRate = ((double) faults / totalRequests) * 100;
+        double hitRate = ((double) hits / totalRequests) * 100;
+
+        System.out.println("\n--- FIFO Results ---");
+        System.out.println("Total Requests: " + totalRequests);
+        System.out.println("Total Faults:   " + faults);
+        System.out.println("Total Hits:     " + hits);
+        System.out.printf("Fault Rate (Failure): %.2f%%\n", faultRate);
+        System.out.printf("Hit Rate (Success):   %.2f%%\n", hitRate);
     }
 }
