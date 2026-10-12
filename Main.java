@@ -13,7 +13,7 @@ public class Main {
             System.out.println("Non-Preemptive Algorithms - ROLAIGNE");
             System.out.println("  3. Shortest Job Next");
             System.out.println("  4. Non-Preemptive Priority");
-            System.out.println("Page Replacement Algorithms - 1 PERSON");
+            System.out.println("Page Replacement Algorithms - Aiken");
             System.out.println("  5. First In First Out (FIFO)");
             System.out.println("  6. Most Recently Used (MRU)");
             System.out.println("  7. Exit Application");
