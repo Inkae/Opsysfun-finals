@@ -15,7 +15,7 @@ public class NPP {
         int finished = 0;
 
         System.out.println("Ready Queue:");
-            // Among the processes that have arrived pick the one with the lowest priority number
+            // pick the one with the lowest priority number
             while (finished < n) {
             int pick = -1;
             for (int i = 0; i < n; i++) {

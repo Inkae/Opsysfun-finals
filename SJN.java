@@ -15,7 +15,7 @@ public class SJN {
  
         System.out.println("Ready Queue:");
         while (finished < n) {
-            // Among the processes that have arrived pick the one with the shortest burst time
+            // pick the one with the shortest burst time
             int pick = -1;
             for (int i = 0; i < n; i++) {
                 if (!done[i] && arrival[i] <= time) {
@@ -26,7 +26,7 @@ public class SJN {
                 }
             }
  
-            // no process has arrived yet, so the CPU is idle.
+            // no process has arrived yet so the CPU is idle.
             if (pick == -1) {
                 int next = Integer.MAX_VALUE;
                 for (int i = 0; i < n; i++) {

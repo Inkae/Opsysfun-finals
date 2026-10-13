@@ -59,7 +59,6 @@ public class Main {
  
                 for (int i = 0; i < n; i++) {
                     System.out.println("Process " + (i + 1) + ":");
-                    // CHANGED: keep asking while the Process ID was already used
                     boolean duplicate = true;
                     while (duplicate) {
                         duplicate = false;
@@ -74,7 +73,7 @@ public class Main {
 
                     arrival[i] = readInt(scanner, "  Arrival Time: ", 0);
                     burst[i] = readInt(scanner, "  Burst Time: ", 1);
-                    // Priority for Non-Preemptive Priority
+
                     if (choice == 4) {
                         priority[i] = readInt(scanner, "  Priority (lower number = higher priority): ", 0);
                     }
