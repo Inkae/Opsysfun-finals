@@ -1,3 +1,13 @@
+/* +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+    FIRST IN FIRST OUT (FIFO) PROGRAM
+
+    Caranto, Crisiane Josef A
+    Mangaliman, Rolaigne E.
+    Velasco, Aiken A.
+
+    CYB 202 - OPSYSFUN FINALS
++=+=+=+=+=+=+=+=+=+=+=+=+=+=*/
+
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -23,11 +33,11 @@ public class FIFO {
                 }
                 memory.add(page); 
                 faults++;
-                System.out.println("Page " + page + " -> Fault: " + memory);
+                System.out.printf("Page %-3d -> Fault: %s\n", page, memory);
             } else {
                 // Page Hit
                 hits++;
-                System.out.println("Page " + page + " -> Hit:   " + memory);
+                System.out.printf("Page %-3d -> Hit:   %s\n", page, memory);
             }
         }
         
@@ -36,9 +46,9 @@ public class FIFO {
         double hitRate = ((double) hits / totalRequests) * 100;
 
         System.out.println("\n--- FIFO Results ---");
-        System.out.println("Total Requests: " + totalRequests);
-        System.out.println("Total Faults:   " + faults);
-        System.out.println("Total Hits:     " + hits);
+        System.out.printf("Total Requests:       %d\n", totalRequests);
+        System.out.printf("Total Faults:         %d\n", faults);
+        System.out.printf("Total Hits:           %d\n", hits);
         System.out.printf("Fault Rate (Failure): %.2f%%\n", faultRate);
         System.out.printf("Hit Rate (Success):   %.2f%%\n", hitRate);
     }

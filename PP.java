@@ -123,7 +123,7 @@ public class PP {
 
     // Driver Code
     public static void main(String[] args) {
-        System.out.println("\n+=+=+=+ PRIORITY SCHEDULING DEMONSTRATION +=+=+=+");
+        System.out.println("\n--- Preemptive Priority ---");
         int num_process;
         System.out.print("Enter the number of processes : ");
         num_process = input.nextInt();
@@ -187,19 +187,24 @@ public class PP {
         Arrays.sort(array, Comparator.comparingInt(o -> o.processID));
 
         float avgWait = 0, avgTT = 0;
-        System.out.print("\nProgram No.\tArrival Time\tPriority\tBurst Time\tWaiting Time\tTurnaround Time\n");
+        System.out.println();
+        System.out.printf("%-12s %-14s %-12s %-10s %-18s %-16s %-14s\n", 
+            "Process ID", "Arrival Time", "Burst Time", "Priority", "Completion Time", "Turnaround Time", "Waiting Time");
+
         for (int i = 0; i < num_process; i++) {
             int waitTime = array[i].outTime - array[i].inTime - array[i].tempBurstTime;
             int turnaroundTime = array[i].outTime - array[i].inTime;
 
-            System.out.printf("%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n", 
-                array[i].processID, array[i].arrivalTime, array[i].priority, 
-                array[i].tempBurstTime, waitTime, turnaroundTime);
+            System.out.printf("P%-11d %-14d %-12d %-10d %-18d %-16d %-14d\n", 
+                array[i].processID, array[i].arrivalTime, array[i].tempBurstTime, 
+                array[i].priority, array[i].outTime, turnaroundTime, waitTime);
 
             avgWait += waitTime;
             avgTT += turnaroundTime;
         }
 
-        System.out.printf("\nAverage Waiting Time : %,.2f\nAverage Turnaround Time : %,.2f\n", (avgWait / num_process), (avgTT / num_process));
+        System.out.println("\n--- Preemptive Priority Results ---");
+        System.out.printf("Average Waiting Time:    %.2f\n", (avgWait / num_process));
+        System.out.printf("Average Turnaround Time: %.2f\n", (avgTT / num_process));
     }
 }

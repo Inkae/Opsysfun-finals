@@ -1,5 +1,14 @@
+/* +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+    NON-PREEMPTIVE PRIORITY PROGRAM
+
+    Caranto, Crisiane Josef A
+    Mangaliman, Rolaigne E.
+    Velasco, Aiken A.
+
+    CYB 202 - OPSYSFUN FINALS
++=+=+=+=+=+=+=+=+=+=+=+=+=+=*/
+
 // NON-PREEMPTIVE ALGORITHMS
-// NON-PREEMPTIVE PRIORITY
 
 public class NPP {
 
@@ -53,12 +62,14 @@ public class NPP {
         }
 
         // Print results
-         double totalWaiting = 0;
+        double totalWaiting = 0;
         double totalTurnaround = 0;
-        System.out.println("\nProcess ID\tArrival\t\tBurst\t\tPriority\tComplete\tTurnaround\tWaiting");
+        System.out.println();
+        System.out.printf("%-12s %-14s %-12s %-10s %-18s %-16s %-14s\n", 
+            "Process ID", "Arrival Time", "Burst Time", "Priority", "Completion Time", "Turnaround Time", "Waiting Time");
         for (int i = 0; i < n; i++) {
-            System.out.println("P" + proccessID[i] + "\t\t" + arrival[i] + "\t\t" + burst[i] + "\t\t"
-                    + priority[i] + "\t\t" + completion[i] + "\t\t" + turnaround[i] + "\t\t" + waiting[i]);
+            System.out.printf("P%-11d %-14d %-12d %-10d %-18d %-16d %-14d\n",
+                proccessID[i], arrival[i], burst[i], priority[i], completion[i], turnaround[i], waiting[i]);
             totalWaiting += waiting[i];
             totalTurnaround += turnaround[i];
         }

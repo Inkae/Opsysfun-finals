@@ -1,5 +1,14 @@
+/* +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+    SHORTEST JOB NEXT (SJN) PROGRAM
+
+    Caranto, Crisiane Josef A
+    Mangaliman, Rolaigne E.
+    Velasco, Aiken A.
+
+    CYB 202 - OPSYSFUN FINALS
++=+=+=+=+=+=+=+=+=+=+=+=+=+=*/
+
 // NON-PREEMPTIVE ALGORITHMS
-// SHORTEST JOB NEXT
 
 public class SJN {
  
@@ -53,10 +62,12 @@ public class SJN {
         // Print results
         double totalWaiting = 0;
         double totalTurnaround = 0;
-        System.out.println("\nProcess ID\tArrival\t\tBurst(CPU Time)\t\tEnd\tTurnaround\tWaiting");
+        System.out.println();
+        System.out.printf("%-12s %-14s %-12s %-18s %-16s %-14s\n", 
+            "Process ID", "Arrival Time", "Burst Time", "Completion Time", "Turnaround Time", "Waiting Time");
         for (int i = 0; i < n; i++) {
-            System.out.println("P" + proccessID[i] + "\t\t" + arrival[i] + "\t\t" + burst[i] + "\t\t\t"
-                    + completion[i] + "\t" + turnaround[i] + "\t\t" + waiting[i]);
+            System.out.printf("P%-11d %-14d %-12d %-18d %-16d %-14d\n",
+                proccessID[i], arrival[i], burst[i], completion[i], turnaround[i], waiting[i]);
             totalWaiting += waiting[i];
             totalTurnaround += turnaround[i];
         }
@@ -66,4 +77,3 @@ public class SJN {
         System.out.printf("Average Turnaround Time: %.2f\n", totalTurnaround / n);
     }
 }
- 

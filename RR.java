@@ -1,5 +1,5 @@
-/* +=+=+=+=+=+=+=+=+=+=+=+=+=+=
-    ROUND ROBIN JAVA PROGRAM
+/* +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+    ROUND ROBIN SCHEDULING PROGRAM
 
     Caranto, Crisiane Josef A
     Mangaliman, Rolaigne E.
@@ -19,7 +19,7 @@ import java.util.*;
 public class RR{
     private static Scanner input = new Scanner(System.in);
     public static void main(String[] args) {
-        System.out.println("\n+=+=+=+ ROUND ROBIN DEMONSTRATION +=+=+=+");
+        System.out.println("\n--- Round Robin ---");
         int num_process, tq;
         System.out.print("Enter the time quantum : ");
         tq = input.nextInt();
@@ -129,6 +129,7 @@ public class RR{
         int finalBurst[] = new int[num_process];
         int finalWait[] = new int[num_process];
         int finalTurn[] = new int[num_process];
+        int finalCompletion[] = new int[num_process];
 
         // adds results to the arrays for the results
         for (int i = 0; i < num_process; i++) {
@@ -137,17 +138,24 @@ public class RR{
             finalBurst[origIdx] = burst[i];
             finalWait[origIdx] = wait[i];
             finalTurn[origIdx] = turn[i];
+            finalCompletion[origIdx] = completion[i];
         }
 
         //printing the output by looping the results arrays
         float avgWait = 0, avgTT = 0;
-        System.out.print("\nProgram No.\tArrival Time\tBurst Time\tWaiting Time\tTurnaround Time\n");
+        System.out.println();
+        System.out.printf("%-12s %-14s %-12s %-18s %-16s %-14s\n", 
+            "Process ID", "Arrival Time", "Burst Time", "Completion Time", "Turnaround Time", "Waiting Time");
+
         for (int i = 0; i < num_process; i++) {
-            System.out.printf("%d\t\t%d\t\t%d\t\t%d\t\t%d\n", (i + 1), finalArrival[i], finalBurst[i], finalWait[i], finalTurn[i]);
+            System.out.printf("P%-11d %-14d %-12d %-18d %-16d %-14d\n", 
+                (i + 1), finalArrival[i], finalBurst[i], finalCompletion[i], finalTurn[i], finalWait[i]);
             avgWait += finalWait[i];
             avgTT += finalTurn[i];
         }
 
-        System.out.printf("\nAverage Waiting Time : %,.2f\nAverage Turnaround Time : %,.2f\n", (avgWait / num_process), (avgTT / num_process));
+        System.out.println("\n--- Round Robin Results ---");
+        System.out.printf("Average Waiting Time:    %.2f\n", (avgWait / num_process));
+        System.out.printf("Average Turnaround Time: %.2f\n", (avgTT / num_process));
     }
 }

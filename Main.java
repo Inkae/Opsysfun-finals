@@ -1,5 +1,12 @@
-// OPERATING SYSTEM FUNDAMENTALS FINAL OUTPUT
-// Caranto, Crisiane | Mangaliman, Rolaigne | Velasco, Aiken
+/* +=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=+=
+    OPERATING SYSTEM FUNDAMENTALS MAIN MENU
+
+    Caranto, Crisiane Josef A
+    Mangaliman, Rolaigne E.
+    Velasco, Aiken A.
+
+    CYB 202 - OPSYSFUN FINALS
++=+=+=+=+=+=+=+=+=+=+=+=+=+=*/
 
 import java.util.Scanner;
 
