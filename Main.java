@@ -58,11 +58,17 @@ public class Main {
                 continue;
             }
 
-            // NON-PREEMPTIVE ALGORITHMS (SJN AND NPP)
-            if (choice == 3 || choice == 4) {
+            // ALL CPU SCHEDULING ALGORITHMS (Choices 1 to 4)
+            if (choice >= 1 && choice <= 4) {
                 System.out.println("\n-Enter the following details-");
+                
+                int tq = 0;
+                if (choice == 1) {
+                    tq = readInt(scanner, "Enter Time Quantum: ", 1);
+                }
+
                 int n = readInt(scanner, "Enter number of processes: ", 1);
-                int[] proccessID = new int[n];
+                int[] processID = new int[n];
                 int[] arrival = new int[n];
                 int[] burst = new int[n];
                 int[] priority = new int[n];
@@ -72,9 +78,9 @@ public class Main {
                     boolean duplicate = true;
                     while (duplicate) {
                         duplicate = false;
-                        proccessID[i] = readInt(scanner, "  Process ID: ", 0);
+                        processID[i] = readInt(scanner, "  Process ID: ", 0);
                         for (int j = 0; j < i; j++) {
-                            if (proccessID[j] == proccessID[i]) {
+                            if (processID[j] == processID[i]) {
                                 duplicate = true;
                                 System.out.println("  Process ID already used. Enter a different one.");
                             }
@@ -84,22 +90,30 @@ public class Main {
                     arrival[i] = readInt(scanner, "  Arrival Time: ", 0);
                     burst[i] = readInt(scanner, "  Burst Time: ", 1);
 
-                    if (choice == 4) {
+                    if (choice == 2 || choice == 4) {
                         priority[i] = readInt(scanner, "  Priority (lower number = higher priority): ", 0);
                     }
                 }
  
-                if (choice == 3) {
+                if (choice == 1) {
+                    RR rr = new RR();
+                    rr.run(processID, arrival, burst, tq);
+                } else if (choice == 2) {
+                    PP pp = new PP();
+                    pp.run(processID, arrival, burst, priority);
+                } else if (choice == 3) {
                     SJN sjn = new SJN();
-                    sjn.run(proccessID, arrival, burst);
-                } else {
+                    sjn.run(processID, arrival, burst);
+                } else if (choice == 4) {
                     NPP npp = new NPP();
-                    npp.run(proccessID, arrival, burst, priority);
+                    npp.run(processID, arrival, burst, priority);
                 }
+                
+                // Return to menu after executing CPU scheduling
                 continue;
             }
 
-            // Input handling for Page Replacement Algorithms (Choices 5 and 6)
+            // PAGE REPLACEMENT ALGORITHMS (Choices 5 and 6)
             System.out.print("Enter number of memory frames: ");
             int frames = scanner.nextInt();
 

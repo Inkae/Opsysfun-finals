@@ -15,10 +15,8 @@
 
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Scanner;
 
 public class PP {
-    private static Scanner input = new Scanner(System.in);
 
     // Static inner Process class representing each job/process
     static class Process {
@@ -121,38 +119,14 @@ public class PP {
         }
     }
 
-    // Driver Code
-    public static void main(String[] args) {
+    // Core execution function
+    public void run(int[] processID, int[] arrival, int[] burst, int[] priority) {
         System.out.println("\n--- Preemptive Priority ---");
-        int num_process;
-        System.out.print("Enter the number of processes : ");
-        num_process = input.nextInt();
-
-        int arrival[] = new int[num_process];
-        int priority[] = new int[num_process];
-        int burst[] = new int[num_process];
-
-        // Loop input for arrival times
-        System.out.print("\nEnter the arrival time of the processes (space-separated) : ");
-        for (int i = 0; i < num_process; i++) {
-            arrival[i] = input.nextInt();
-        }
-
-        // Loop input for priorities
-        System.out.print("\nEnter the priority of the processes (space-separated) : ");
-        for (int i = 0; i < num_process; i++) {
-            priority[i] = input.nextInt();
-        }
-
-        // Loop input for burst times
-        System.out.print("\nEnter the burst time of the processes (space-separated) : ");
-        for (int i = 0; i < num_process; i++) {
-            burst[i] = input.nextInt();
-        }
+        int num_process = processID.length;
 
         Process[] array = new Process[num_process];
         for (int i = 0; i < num_process; i++) {
-            array[i] = new Process(i + 1, arrival[i], priority[i], burst[i]);
+            array[i] = new Process(processID[i], arrival[i], priority[i], burst[i]);
         }
 
         // Sort processes initially by arrival time
