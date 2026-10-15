@@ -8,6 +8,11 @@
     CYB 202 - OPSYSFUN FINALS
 +=+=+=+=+=+=+=+=+=+=+=+=+=+=*/
 
+/*
+    CODE BASED ON:
+    GeeksforGeeks. (n.d.). Program for preemptive priority CPU scheduling. https://www.geeksforgeeks.org/dsa/program-for-preemptive-priority-cpu-scheduling/ 
+*/
+
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Scanner;
