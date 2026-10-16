@@ -42,7 +42,22 @@ public class PP {
         }
     }
 
-    // Function to insert a process into the min-heap based on priority
+    // Helper method to compare two processes: returns true if p1 has higher priority than p2
+    // Criteria: 
+    // 1. Lower priority value comes first (higher priority).
+    // 2. If priority is same, earlier arrival time comes first.
+    // 3. If arrival time is also same, lower processID comes first (FCFS tie-breaker).
+    static boolean shouldSwap(Process p1, Process p2) {
+        if (p1.priority != p2.priority) {
+            return p1.priority < p2.priority;
+        }
+        if (p1.arrivalTime != p2.arrivalTime) {
+            return p1.arrivalTime < p2.arrivalTime;
+        }
+        return p1.processID < p2.processID;
+    }
+
+    // Function to insert a process into the min-heap based on strict ordering
     static void insert(Process[] heap, Process value, int[] heapSize, int[] currentTime) {
         int start = heapSize[0];
         heap[heapSize[0]] = value;
@@ -51,8 +66,8 @@ public class PP {
         }
         heapSize[0]++;
 
-        // Ordering the Heap (Min-Heap based on priority value: lower number = higher priority)
-        while (start != 0 && heap[(start - 1) / 2].priority > heap[start].priority) {
+        // Ordering the Heap using the strict comparator helper
+        while (start != 0 && shouldSwap(heap[start], heap[(start - 1) / 2])) {
             Process temp = heap[(start - 1) / 2];
             heap[(start - 1) / 2] = heap[start];
             heap[start] = temp;
@@ -60,15 +75,16 @@ public class PP {
         }
     }
 
-    // Function to reorder the heap based on priority after extraction
+    // Function to reorder the heap based on strict priority/arrival/ID rules after extraction
     static void order(Process[] heap, int heapSize, int start) {
         int smallest = start;
         int left = 2 * start + 1;
         int right = 2 * start + 2;
-        if (left < heapSize && heap[left].priority < heap[smallest].priority) {
+
+        if (left < heapSize && shouldSwap(heap[left], heap[smallest])) {
             smallest = left;
         }
-        if (right < heapSize && heap[right].priority < heap[smallest].priority) {
+        if (right < heapSize && shouldSwap(heap[right], heap[smallest])) {
             smallest = right;
         }
 
@@ -121,7 +137,7 @@ public class PP {
 
     // Core execution function
     public void run(int[] processID, int[] arrival, int[] burst, int[] priority) {
-        System.out.println("\n--- Preemptive Priority ---");
+        System.out.println("\n--- Preemptive Priority (Strict FCFS Tie-Breaker) ---");
         int num_process = processID.length;
 
         Process[] array = new Process[num_process];
